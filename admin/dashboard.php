@@ -6,6 +6,10 @@ require_once __DIR__ . '/includes/admin_header.php';
 $counts = [];
 $res = $conn->query("SELECT COUNT(*) AS c FROM destinations");
 $counts['destinations'] = $res->fetch_assoc()['c'] ?? 0;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
 $res = $conn->query("SELECT COUNT(*) AS c FROM destination_photos");
 $counts['photos'] = $res->fetch_assoc()['c'] ?? 0;
 ?>
@@ -15,21 +19,39 @@ $counts['photos'] = $res->fetch_assoc()['c'] ?? 0;
       <h2>Dashboard</h2>
       <p>Welcome, <?php echo htmlspecialchars($_SESSION['admin_name']); ?></p>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
     <div class="col-md-4">
       <div class="card mb-3">
         <div class="card-body">
           <h5><i class="fa fa-map-marker-alt"></i> Destinations</h5>
           <p class="display-6"><?php echo (int)$counts['destinations']; ?></p>
+<<<<<<< HEAD
           <a href="/admin/destinations/index.php" class="btn btn-sm btn-outline-primary">Manage</a>
         </div>
       </div>
     </div>
+=======
+          
+          <a href="destinations/index.php" class="btn btn-sm btn-outline-primary">Manage</a>
+        </div>
+      </div>
+    </div>
+
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
     <div class="col-md-4">
       <div class="card mb-3">
         <div class="card-body">
           <h5><i class="fa fa-images"></i> Photos</h5>
           <p class="display-6"><?php echo (int)$counts['photos']; ?></p>
+<<<<<<< HEAD
           <a href="/admin/photos/index.php" class="btn btn-sm btn-outline-primary">Manage</a>
+=======
+          <!-- ✅ relative route -->
+          <a href="photos/index.php" class="btn btn-sm btn-outline-primary">Manage</a>
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
         </div>
       </div>
     </div>

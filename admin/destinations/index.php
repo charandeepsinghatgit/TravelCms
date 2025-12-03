@@ -10,6 +10,7 @@ $res = $conn->query($q);
 <div class="container-fluid">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Destinations</h3>
+<<<<<<< HEAD
     <a class="btn btn-success" href="/admin/destinations/create.php"><i class="fa fa-plus"></i> Add Destination</a>
   </div>
 
@@ -17,6 +18,20 @@ $res = $conn->query($q);
     <thead><tr>
       <th>ID</th><th>Name</th><th>Country</th><th>Rating</th><th>Date Added</th><th>Actions</th>
     </tr></thead>
+=======
+    <!-- from index.php → create.php is in the same folder -->
+    <a class="btn btn-success" href="create.php">
+      <i class="fa fa-plus"></i> Add Destination
+    </a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Country</th><th>Rating</th><th>Date Added</th><th>Actions</th>
+      </tr>
+    </thead>
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
     <tbody>
     <?php while ($row = $res->fetch_assoc()): ?>
       <tr>
@@ -26,8 +41,17 @@ $res = $conn->query($q);
         <td><?php echo e($row['rating']); ?></td>
         <td><?php echo e($row['date_added']); ?></td>
         <td>
+<<<<<<< HEAD
           <a class="btn btn-sm btn-primary" href="/admin/destinations/edit.php?id=<?php echo $row['id']; ?>">Edit</a>
           <a class="btn btn-sm btn-danger" href="/admin/destinations/delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Delete?')">Delete</a>
+=======
+          <!-- same folder: edit.php & delete.php -->
+          <a class="btn btn-sm btn-primary"
+             href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
+          <a class="btn btn-sm btn-danger"
+             href="delete.php?id=<?php echo $row['id']; ?>"
+             onclick="return confirm('Delete?')">Delete</a>
+>>>>>>> 4b0b099 (Initial commit: Travel CMS project)
         </td>
       </tr>
     <?php endwhile; ?>
