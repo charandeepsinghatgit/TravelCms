@@ -1,15 +1,9 @@
 <?php
-require_once __DIR__ . '/../db_connect.php';
 session_start();
-<<<<<<< HEAD
-$errors = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
-    if ($username === '' || $password === '') {
-        $errors[] = 'Enter username and password';
-    } else {
-=======
+
+
+// username: admin
+// password: admin
 
 $errors = [];
 
@@ -20,34 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === '' || $password === '') {
         $errors[] = 'Enter username and password';
     } else {
-        // Check in admins table
->>>>>>> 4b0b099 (Initial commit: Travel CMS project)
-        $stmt = $conn->prepare("SELECT id, password_hash, full_name FROM admins WHERE username = ?");
-        $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $res = $stmt->get_result();
-<<<<<<< HEAD
-        if ($row = $res->fetch_assoc()) {
-            if (password_verify($password, $row['password_hash'])) {
-                $_SESSION['admin_logged_in'] = true;
-                $_SESSION['admin_id'] = $row['id'];
-                $_SESSION['admin_name'] = $row['full_name'] ?? $username;
-                header('Location: /admin/dashboard.php');
-=======
+        if ($username === 'admin' && $password === 'admin') {
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_id'] = 1;
+            $_SESSION['admin_name'] = 'Debug Admin';
 
-        if ($row = $res->fetch_assoc()) {
-            // Plain‑text compare: password column currently stores "admin"
-            if ($password === $row['password_hash']) {
-                $_SESSION['admin_logged_in'] = true;
-                $_SESSION['admin_id'] = $row['id'];
-                $_SESSION['admin_name'] = $row['full_name'] ?? $username;
-
-                header('Location: dashboard.php');
->>>>>>> 4b0b099 (Initial commit: Travel CMS project)
-                exit;
-            } else {
-                $errors[] = 'Invalid credentials';
-            }
+            
+            header('Location: dashboard.php');
+            exit;
         } else {
             $errors[] = 'Invalid credentials';
         }
@@ -57,31 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html>
 <head>
-<<<<<<< HEAD
-<meta charset="utf-8">
-<title>Admin Login</title>
-<link href="/frontend/css/bootstrap.min.css" rel="stylesheet">
-=======
     <meta charset="utf-8">
-    <title>Admin Login</title>
-    
+    <title>Admin Login </title>
     <link href="../frontend/css/bootstrap.min.css" rel="stylesheet">
->>>>>>> 4b0b099 (Initial commit: Travel CMS project)
 </head>
 <body class="bg-light">
 <div class="container" style="max-width:420px; margin-top:80px;">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title mb-4">Admin Login</h4>
-<<<<<<< HEAD
-      <?php foreach($errors as $e): ?>
-        <div class="alert alert-danger"><?php echo htmlspecialchars($e); ?></div>
-      <?php endforeach; ?>
-      <form method="post" novalidate>
-        <div class="mb-3">
-          <label class="form-label">Username</label>
-          <input name="username" class="form-control" value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>">
-=======
+      <h4 class="card-title mb-4">Admin Login </h4>
 
       <?php foreach($errors as $e): ?>
         <div class="alert alert-danger"><?php echo htmlspecialchars($e); ?></div>
@@ -92,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label class="form-label">Username</label>
           <input name="username" class="form-control"
                  value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>">
->>>>>>> 4b0b099 (Initial commit: Travel CMS project)
         </div>
         <div class="mb-3">
           <label class="form-label">Password</label>
@@ -100,13 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button class="btn btn-primary w-100">Login</button>
       </form>
-<<<<<<< HEAD
-=======
-
       <p class="mt-3 text-muted small">
-        Login for now: <strong>admin / admin</strong>
+        Debug credentials: <strong>admin / admin</strong>
       </p>
->>>>>>> 4b0b099 (Initial commit: Travel CMS project)
     </div>
   </div>
 </div>

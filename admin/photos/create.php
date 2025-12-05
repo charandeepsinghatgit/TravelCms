@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $caption = trim($_POST['caption'] ?? '');
     if ($destination_id <= 0) $errors[] = 'Choose destination';
     $img_error = '';
-    $uploaded = upload_image('image', __DIR__ . '/../../uploads/photos', $img_error);
+    $uploaded = upload_image('image', __DIR__ . '../uploads/photos', $img_error);
     if ($img_error) $errors[] = $img_error;
     if (empty($errors)) {
         $stmt = $conn->prepare("INSERT INTO destination_photos (destination_id, image, caption) VALUES (?,?,?)");
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="mb-3"><label class="form-label">Caption</label><input name="caption" class="form-control" value="<?php echo e($_POST['caption'] ?? ''); ?>"></div>
     <div class="mb-3"><label class="form-label">Image</label><input type="file" name="image" accept="image/*" class="form-control"></div>
     <button class="btn btn-primary">Upload</button>
-    <a class="btn btn-secondary" href="/admin/photos/index.php">Cancel</a>
+    <a class="btn btn-secondary" href="../index.php">Cancel</a>
   </form>
 </div>
 <?php require_once __DIR__ . '/../includes/admin_footer.php'; ?>

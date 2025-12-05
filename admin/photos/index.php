@@ -9,7 +9,7 @@ $res = $conn->query($q);
 <div class="container-fluid">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Destination Photos</h3>
-    <a class="btn btn-success" href="/admin/photos/create.php"><i class="fa fa-plus"></i> Add Photo</a>
+    <a class="btn btn-success" href="../photos/create.php"><i class="fa fa-plus"></i> Add Photo</a>
   </div>
 
   <table class="table table-striped">
@@ -18,12 +18,12 @@ $res = $conn->query($q);
     <?php while ($row = $res->fetch_assoc()): ?>
       <tr>
         <td><?php echo (int)$row['id']; ?></td>
-        <td><?php echo e($row['destination_name']); ?></td>
-        <td><img src="/uploads/photos/<?php echo e($row['image']); ?>" style="max-width:120px"></td>
+        <td><?php echo ($row['destination_name']); ?></td>
+        <td><img src="../uploads/photos/<?php echo e($row['image']); ?>" style="max-width:120px"></td>
         <td><?php echo e($row['caption']); ?></td>
         <td><?php echo e($row['uploaded_at']); ?></td>
         <td>
-          <a class="btn btn-sm btn-danger" href="/admin/photos/delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Delete?')">Delete</a>
+          <a class="btn btn-sm btn-danger" href="/photos/delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Delete?')">Delete</a>
         </td>
       </tr>
     <?php endwhile; ?>
